@@ -1,6 +1,8 @@
 package com.cosingshuttle.jpaTutorial.jpaTuts.repositories;
 
 import com.cosingshuttle.jpaTutorial.jpaTuts.entities.ProductEntity;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -36,4 +38,37 @@ public interface ProductRepository extends JpaRepository<ProductEntity,Long> {
 //    @Query("SELECT e FROM ProductEntity e WHERE e.title =:title AND e.price =:price")
     @Query("SELECT e FROM ProductEntity e WHERE e.title = ?1 AND e.price = ?2")
     Optional<ProductEntity> fetchByTitleAndPrice(String title, BigDecimal price);
+
+
+    //for Sorting in method names
+    List<ProductEntity> findBytitleOrderByPrice(String title);
+
+    List<ProductEntity> findByOrderByPrice();
+
+    List<ProductEntity> findBy(Sort sort);
+
+    List<ProductEntity> findByTitleContainingIgnoreCase(String title,Pageable pageable);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

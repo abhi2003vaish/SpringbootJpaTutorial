@@ -103,5 +103,10 @@ class JpaTutrialApplicationTests {
         productEntity.ifPresent(System.out::println);
     }
 
+    void getSortedProductsByPrice(){
+        List<ProductEntity> entities=productRepository.findBytitleOrderByPrice("pepsi");
+        System.out.println(entities);
+    }
+
 
 }
